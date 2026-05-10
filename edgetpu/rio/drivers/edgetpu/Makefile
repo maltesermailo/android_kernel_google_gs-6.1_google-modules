@@ -12,7 +12,7 @@ endif
 
 KBUILD_OPTIONS	+= CONFIG_GCIP=y
 
--include $(KERNEL_SRC)/../private/google-modules/soc/gs/Makefile.include
+-include $(KERNEL_SRC)/../../../../private/google-modules/soc/gs/Makefile.include
 
 ifneq ("$(wildcard $(OUT_DIR)/../private/google-modules/power/mitigation/Module.symvers)","")
 EXTRA_SYMBOLS	+= $(OUT_DIR)/../private/google-modules/power/mitigation/Module.symvers
@@ -33,9 +33,9 @@ endif
 GCIP_DIR=gcip-kernel-driver/drivers/gcip
 
 modules modules_install compile_commands.json:
-	$(MAKE) -C $(KERNEL_SRC) M=$(M)/$(GCIP_DIR) W=1 gcip.o
-	$(MAKE) -C $(KERNEL_SRC) M=$(M) W=1 $(KBUILD_OPTIONS) \
+	$(MAKE) -C $(KERNEL_SRC) M=$(M)/$(GCIP_DIR) gcip.o
+	$(MAKE) -C $(KERNEL_SRC) M=$(M) $(KBUILD_OPTIONS) \
 	KBUILD_EXTRA_SYMBOLS="$(EXTRA_SYMBOLS)" $(@)
 clean:
-	$(MAKE) -C $(KERNEL_SRC) M=$(M)/$(GCIP_DIR) W=1 $(@)
-	$(MAKE) -C $(KERNEL_SRC) M=$(M) W=1 $(KBUILD_OPTIONS) $(@)
+	$(MAKE) -C $(KERNEL_SRC) M=$(M)/$(GCIP_DIR) $(@)
+	$(MAKE) -C $(KERNEL_SRC) M=$(M) $(KBUILD_OPTIONS) $(@)

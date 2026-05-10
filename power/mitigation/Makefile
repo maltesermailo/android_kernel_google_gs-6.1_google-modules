@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: GPL-2.0-only
 
 subdir-ccflags-y += \
-		-I$(KERNEL_SRC)/../private/google-modules/bms
+		-I$(KERNEL_SRC)/../../../../private/google-modules/bms
 
 obj-$(CONFIG_GOOGLE_BCL) += google_bcl.o
 google_bcl-y			+= google_bcl_core.o
@@ -29,7 +29,7 @@ EXTRA_SYMBOLS += $(OUT_DIR)/../private/google-modules/radio/samsung/*/Module.sym
 endif
 
 KBUILD_OPTIONS += CONFIG_GOOGLE_BCL=m
-include $(KERNEL_SRC)/../private/google-modules/soc/gs/Makefile.include
+include $(KERNEL_SRC)/../../../../private/google-modules/soc/gs/Makefile.include
 
 modules modules_install clean compile_commands.json:
 	$(MAKE) -C $(KERNEL_SRC) M=$(M) \

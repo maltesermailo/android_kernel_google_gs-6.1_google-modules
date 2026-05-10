@@ -11,7 +11,7 @@ KERNEL_SRC ?= /lib/modules/$(shell uname -r)/build
 M ?= $(shell pwd)
 
 EXTRA_CFLAGS += -I$(KERNEL_SRC)/$(M)/include/
-EXTRA_CFLAGS += -I$(KERNEL_SRC)/../private/google-modules/amplifiers/snd_soc_wm_adsp
+EXTRA_CFLAGS += -I$(KERNEL_SRC)/../../../../private/google-modules/amplifiers/snd_soc_wm_adsp
 EXTRA_SYMBOLS += $(OUT_DIR)/../private/google-modules/amplifiers/snd_soc_wm_adsp/Module.symvers
 
 KBUILD_OPTIONS += CONFIG_SND_SOC_CS35L41=m \
@@ -19,5 +19,5 @@ KBUILD_OPTIONS += CONFIG_SND_SOC_CS35L41=m \
 		  CONFIG_SND_SOC_CS35L41_I2C=m
 
 modules modules_install clean compile_commands.json:
-	$(MAKE) -C $(KERNEL_SRC) M=$(M) W=1 \
+	$(MAKE) -C $(KERNEL_SRC) M=$(M) \
 	$(KBUILD_OPTIONS) EXTRA_CFLAGS="$(EXTRA_CFLAGS)" KBUILD_EXTRA_SYMBOLS="$(EXTRA_SYMBOLS)" $(@)

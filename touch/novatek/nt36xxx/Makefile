@@ -14,7 +14,7 @@ EXTRA_CFLAGS	+= -DNVT_TS_PANEL_BRIDGE
 EXTRA_SYMBOLS	+= $(OUT_DIR)/../private/google-modules/touch/common/Module.symvers
 EXTRA_SYMBOLS	+= $(OUT_DIR)/../private/google-modules/touch/common/usi/Module.symvers
 
-include $(KERNEL_SRC)/../private/google-modules/soc/gs/Makefile.include
+include $(KERNEL_SRC)/../../../../private/google-modules/soc/gs/Makefile.include
 
 modules modules_install clean compile_commands.json:
 	$(MAKE) -C $(KERNEL_SRC) M=$(M) \

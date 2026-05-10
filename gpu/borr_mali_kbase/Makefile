@@ -270,7 +270,7 @@ EXTRA_SYMBOLS += $(OUT_DIR)/../private/google-modules/power/mitigation/Module.sy
 
 CFLAGS_MODULE += -Wall -Werror
 
-# The following were added to align with W=1 in scripts/Makefile.extrawarn
+# The following were added to align with in scripts/Makefile.extrawarn
 # from the Linux source tree (v5.18.14)
 CFLAGS_MODULE += -Wextra -Wunused -Wno-unused-parameter
 CFLAGS_MODULE += -Wmissing-declarations
@@ -328,4 +328,4 @@ endif
 all: modules
 
 modules modules_install clean compile_commands.json:
-	$(MAKE) -C $(KDIR) M=$(M) W=1 $(MAKE_ARGS) EXTRA_CFLAGS="$(EXTRA_CFLAGS)" KBUILD_EXTRA_SYMBOLS="$(EXTRA_SYMBOLS)" $(@)
+	$(MAKE) -C $(KDIR) M=$(M) $(MAKE_ARGS) EXTRA_CFLAGS="$(EXTRA_CFLAGS)" KBUILD_EXTRA_SYMBOLS="$(EXTRA_SYMBOLS)" $(@)

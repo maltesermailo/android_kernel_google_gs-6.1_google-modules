@@ -10,7 +10,7 @@
 #                     "$(OUT_DIR)/../private/google-modules".
 #
 #   GMODULE_SRC_PATH: The path of directory containing source of google-modules.
-#                     (default: $(KERNEL_SRC)/../private/google-modules)
+#                     (default: $(KERNEL_SRC)/../../../../private/google-modules)
 
 GXP_CHIP := CALLISTO
 CONFIG_$(GXP_CHIP) ?= m
@@ -84,7 +84,7 @@ endif
 
 KERNEL_SRC ?= /lib/modules/$(shell uname -r)/build
 # TODO(b/368532067): Remove once tpu-ext.h is properly landed
--include $(KERNEL_SRC)/../private/google-modules/soc/gs/Makefile.include
+-include $(KERNEL_SRC)/../../../../private/google-modules/soc/gs/Makefile.include
 M ?= $(shell pwd)
 
 ccflags-y += -DGIT_REPO_TAG=\"Not\ a\ git\ repository\"
@@ -111,7 +111,7 @@ ccflags-y += -DCONFIG_GOOGLE_BCL
 KBUILD_OPTIONS += GXP_CHIP=$(GXP_CHIP) GXP_PLATFORM=$(GXP_PLATFORM)
 
 # Set google-modules source and out paths if not defined.
-GMODULE_SRC_PATH ?= $(KERNEL_SRC)/../private/google-modules
+GMODULE_SRC_PATH ?= $(KERNEL_SRC)/../../../../private/google-modules
 GMODULE_OUT_PATH ?= $(OUT_DIR)/../private/google-modules
 
 ifneq ($(wildcard $(GMODULE_SRC_PATH)/edgetpu/$(EDGETPU_CHIP)/drivers/edgetpu/include),)
@@ -154,8 +154,8 @@ endif
 
 modules modules_install compile_commands.json:
 	$(MAKE) -C $(KERNEL_SRC) M=$(M)/$(GCIP_DIR) gcip.o
-	$(MAKE) -C $(KERNEL_SRC) M=$(M) W=1 $(KBUILD_OPTIONS) \
+	$(MAKE) -C $(KERNEL_SRC) M=$(M) $(KBUILD_OPTIONS) \
 	EXTRA_CFLAGS="$(EXTRA_CFLAGS)" KBUILD_EXTRA_SYMBOLS="$(EXTRA_SYMBOLS)" $(@)
 clean:
 	$(MAKE) -C $(KERNEL_SRC) M=$(M)/$(GCIP_DIR) $(@)
-	$(MAKE) -C $(KERNEL_SRC) M=$(M) W=1 $(KBUILD_OPTIONS) $(@)
+	$(MAKE) -C $(KERNEL_SRC) M=$(M) $(KBUILD_OPTIONS) $(@)

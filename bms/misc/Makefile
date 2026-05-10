@@ -9,7 +9,7 @@ M ?= $(shell pwd)
 EXTRA_CFLAGS += -DDYNAMIC_DEBUG_MODULE
 
 modules modules_install clean compile_commands.json:
-	$(MAKE) -C $(KERNEL_SRC) M=$(M) W=1 \
+	$(MAKE) -C $(KERNEL_SRC) M=$(M) \
 	EXTRA_CFLAGS="$(EXTRA_CFLAGS)" $(@)
 
 print-%:

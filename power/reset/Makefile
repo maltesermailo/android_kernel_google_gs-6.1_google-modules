@@ -3,7 +3,7 @@ M ?= $(shell pwd)
 
 EXTRA_SYMBOLS += $(OUT_DIR)/../private/google-modules/bms/Module.symvers
 
-include $(KERNEL_SRC)/../private/google-modules/soc/gs/Makefile.include
+include $(KERNEL_SRC)/../../../../private/google-modules/soc/gs/Makefile.include
 
 modules modules_install clean compile_commands.json:
 	$(MAKE) -C $(KERNEL_SRC) M=$(M) \

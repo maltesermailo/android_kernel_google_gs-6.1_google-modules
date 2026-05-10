@@ -1217,7 +1217,7 @@ static long amcs_cdev_compat_ioctl(struct file *file, unsigned int cmd, unsigned
 	return amcs_cdev_unlocked_ioctl(file, cmd, (unsigned long)compat_ptr(arg));
 }
 #else
-#define amcs_cdev_compat_ioctl NULL;
+#define amcs_cdev_compat_ioctl NULL
 #endif
 
 static char *amcs_devnode(struct device *dev, umode_t *mode)

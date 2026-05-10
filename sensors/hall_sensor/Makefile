@@ -6,4 +6,4 @@ M ?= $(shell pwd)
 KBUILD_OPTIONS += CONFIG_SENSORS_HALL=m
 
 modules modules_install clean compile_commands.json:
-	$(MAKE) -C $(KERNEL_SRC) M=$(M) $(KBUILD_OPTIONS) W=1 $(@)
+	$(MAKE) -C $(KERNEL_SRC) M=$(M) $(KBUILD_OPTIONS) $(@)

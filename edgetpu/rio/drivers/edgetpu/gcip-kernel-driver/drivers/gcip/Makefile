@@ -4,7 +4,7 @@
 #
 # Arguments
 #   GMODULE_SRC_PATH: The path of directory containing source of google-modules.
-#                     (default: $(KERNEL_SRC)/../private/google-modules)
+#                     (default: $(KERNEL_SRC)/../../../../private/google-modules)
 
 CONFIG_GCIP		?= m
 obj-$(CONFIG_GCIP)	+= gcip.o
@@ -47,7 +47,7 @@ ccflags-y	+= -I$(CURRENT_DIR)/../../include
 ccflags-y	+= -I$(CURRENT_DIR)/iif/include
 
 # Set the path of google-modules sources if not defined.
-GMODULE_SRC_PATH ?= $(KERNEL_SRC)/../private/google-modules
+GMODULE_SRC_PATH ?= $(KERNEL_SRC)/../../../../private/google-modules
 
 ifneq ($(wildcard $(GMODULE_SRC_PATH)/iif/include),)
 ccflags-y	+= -I$(GMODULE_SRC_PATH)/iif/include
@@ -56,5 +56,5 @@ endif
 
 
 modules modules_install clean:
-	$(MAKE) -C $(KERNEL_SRC) M=$(M) W=1 $(KBUILD_OPTIONS) \
+	$(MAKE) -C $(KERNEL_SRC) M=$(M) $(KBUILD_OPTIONS) \
 	KBUILD_EXTRA_SYMBOLS="$(EXTRA_SYMBOLS)" $(@)
