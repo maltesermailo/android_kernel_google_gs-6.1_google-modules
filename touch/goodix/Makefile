@@ -11,7 +11,7 @@ EXTRA_CFLAGS	+= -DCONFIG_GTI_PM
 #EXTRA_CFLAGS	+= -DCONFIG_TOUCHSCREEN_TBN
 EXTRA_CFLAGS	+= -DCONFIG_GOOG_TOUCH_INTERFACE
 
-EXTRA_SYMBOLS	+= $(OUT_DIR)/../private/google-modules/touch/common/Module.symvers
+EXTRA_SYMBOLS	+= $(OUT_DIR)/../../../../private/google-modules/touch/common/Module.symvers
 
 include $(KERNEL_SRC)/../../../../private/google-modules/soc/gs/Makefile.include
 

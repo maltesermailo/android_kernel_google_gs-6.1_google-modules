@@ -6,7 +6,7 @@ M ?= $(shell pwd)
 
 KBUILD_OPTIONS	+= CONFIG_TOUCHSCREEN_FTS=m
 EXTRA_CFLAGS	+= -DDYNAMIC_DEBUG_MODULE
-EXTRA_SYMBOLS	+= $(OUT_DIR)/../private/google-modules/touch/common/Module.symvers
+EXTRA_SYMBOLS	+= $(OUT_DIR)/../../../../private/google-modules/touch/common/Module.symvers
 
 include $(KERNEL_SRC)/../../../../private/google-modules/soc/gs/Makefile.include
 

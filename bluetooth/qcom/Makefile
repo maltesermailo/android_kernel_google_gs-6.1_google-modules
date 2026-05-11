@@ -3,7 +3,7 @@ M ?= $(shell pwd)
 
 KBUILD_OPTIONS := CONFIG_MSM_BT_POWER=m
 
-EXTRA_SYMBOLS += $(OUT_DIR)/../private/google-modules/bms/misc/Module.symvers
+EXTRA_SYMBOLS += $(OUT_DIR)/../../../../private/google-modules/bms/misc/Module.symvers
 
 include $(KERNEL_SRC)/../../../../private/google-modules/soc/gs/Makefile.include
 

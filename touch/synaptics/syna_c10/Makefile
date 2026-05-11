@@ -15,7 +15,7 @@ EXTRA_CFLAGS	+= -DCONFIG_TOUCHSCREEN_SYNA_TCM2_SYSFS
 EXTRA_CFLAGS	+= -DCONFIG_TOUCHSCREEN_SYNA_TCM2_TESTING
 EXTRA_CFLAGS	+= -DUSE_DRM_BRIDGE
 
-EXTRA_SYMBOLS	+= $(OUT_DIR)/../private/google-modules/touch/common/Module.symvers
+EXTRA_SYMBOLS	+= $(OUT_DIR)/../../../../private/google-modules/touch/common/Module.symvers
 
 include $(KERNEL_SRC)/../../../../private/google-modules/soc/gs/Makefile.include
 

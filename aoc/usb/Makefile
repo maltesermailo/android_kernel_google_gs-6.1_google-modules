@@ -5,8 +5,8 @@ M ?= $(shell pwd)
 
 KBUILD_OPTIONS	+= CONFIG_AOC_DRIVER=m
 
-EXTRA_SYMBOLS	+= $(OUT_DIR)/../private/google-modules/aoc/Module.symvers
-EXTRA_SYMBOLS	+= $(OUT_DIR)/../private/google-modules/aoc/alsa/Module.symvers
+EXTRA_SYMBOLS	+= $(OUT_DIR)/../../../../private/google-modules/aoc/Module.symvers
+EXTRA_SYMBOLS	+= $(OUT_DIR)/../../../../private/google-modules/aoc/alsa/Module.symvers
 
 include $(KERNEL_SRC)/../../../../private/google-modules/soc/gs/Makefile.include
 

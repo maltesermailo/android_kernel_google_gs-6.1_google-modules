@@ -10,9 +10,9 @@ EXTRA_CFLAGS += -Werror
 
 include $(KERNEL_SRC)/../../../../private/google-modules/soc/gs/Makefile.include
 
-EXTRA_SYMBOLS  += $(OUT_DIR)/../private/google-modules/bms/misc/Module.symvers
-EXTRA_SYMBOLS  += $(OUT_DIR)/../private/google-modules/hdcp/samsung/Module.symvers
-EXTRA_SYMBOLS += $(OUT_DIR)/../private/google-modules/display/common/gs_drm/Module.symvers
+EXTRA_SYMBOLS  += $(OUT_DIR)/../../../../private/google-modules/bms/misc/Module.symvers
+EXTRA_SYMBOLS  += $(OUT_DIR)/../../../../private/google-modules/hdcp/samsung/Module.symvers
+EXTRA_SYMBOLS += $(OUT_DIR)/../../../../private/google-modules/display/common/gs_drm/Module.symvers
 
 modules modules_install headers_install clean compile_commands.json:
 	$(MAKE) -C $(KERNEL_SRC) M=$(M) \

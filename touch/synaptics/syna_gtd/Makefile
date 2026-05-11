@@ -10,7 +10,7 @@ EXTRA_CFLAGS	+= -DDYNAMIC_DEBUG_MODULE
 EXTRA_CFLAGS	+= -DCONFIG_TOUCHSCREEN_SYNA_TCM2_REFLASH
 EXTRA_CFLAGS	+= -DCONFIG_TOUCHSCREEN_SYNA_TCM2_SYSFS
 EXTRA_CFLAGS	+= -DCONFIG_TOUCHSCREEN_SYNA_TCM2_TESTING
-EXTRA_SYMBOLS	+= $(OUT_DIR)/../private/google-modules/touch/common/Module.symvers
+EXTRA_SYMBOLS	+= $(OUT_DIR)/../../../../private/google-modules/touch/common/Module.symvers
 
 include $(KERNEL_SRC)/../../../../private/google-modules/soc/gs/Makefile.include
 EXTRA_CFLAGS	+= -DCONFIG_GOOG_TOUCH_INTERFACE

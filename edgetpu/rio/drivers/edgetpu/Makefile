@@ -14,20 +14,20 @@ KBUILD_OPTIONS	+= CONFIG_GCIP=y
 
 -include $(KERNEL_SRC)/../../../../private/google-modules/soc/gs/Makefile.include
 
-ifneq ("$(wildcard $(OUT_DIR)/../private/google-modules/power/mitigation/Module.symvers)","")
-EXTRA_SYMBOLS	+= $(OUT_DIR)/../private/google-modules/power/mitigation/Module.symvers
+ifneq ("$(wildcard $(OUT_DIR)/../../../../private/google-modules/power/mitigation/Module.symvers)","")
+EXTRA_SYMBOLS	+= $(OUT_DIR)/../../../../private/google-modules/power/mitigation/Module.symvers
 endif
 
-ifneq ("$(wildcard $(OUT_DIR)/../private/google-modules/soc/gs/drivers/soc/google/gsa/Module.symvers)","")
-EXTRA_SYMBOLS += $(OUT_DIR)/../private/google-modules/soc/gs/drivers/soc/google/gsa/Module.symvers
+ifneq ("$(wildcard $(OUT_DIR)/../../../../private/google-modules/soc/gs/drivers/soc/google/gsa/Module.symvers)","")
+EXTRA_SYMBOLS += $(OUT_DIR)/../../../../private/google-modules/soc/gs/drivers/soc/google/gsa/Module.symvers
 endif
 
-ifneq ("$(wildcard $(OUT_DIR)/../private/google-modules/iif/Module.symvers)","")
-EXTRA_SYMBOLS += $(OUT_DIR)/../private/google-modules/iif/Module.symvers
+ifneq ("$(wildcard $(OUT_DIR)/../../../../private/google-modules/iif/Module.symvers)","")
+EXTRA_SYMBOLS += $(OUT_DIR)/../../../../private/google-modules/iif/Module.symvers
 endif
 
-ifneq ("$(wildcard $(OUT_DIR)/../private/google-modules/soc/rdo/Module.symvers)","")
-EXTRA_SYMBOLS += $(OUT_DIR)/../private/google-modules/soc/rdo/Module.symvers
+ifneq ("$(wildcard $(OUT_DIR)/../../../../private/google-modules/soc/rdo/Module.symvers)","")
+EXTRA_SYMBOLS += $(OUT_DIR)/../../../../private/google-modules/soc/rdo/Module.symvers
 endif
 
 GCIP_DIR=gcip-kernel-driver/drivers/gcip

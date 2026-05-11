@@ -7,7 +7,7 @@
 #                     This directory is expected to contain *.ko and
 #                     Module.symvers files per module. If $(OUT_DIR) is
 #                     defined, it will be set to
-#                     "$(OUT_DIR)/../private/google-modules".
+#                     "$(OUT_DIR)/../../../../private/google-modules".
 #
 #   GMODULE_SRC_PATH: The path of directory containing source of google-modules.
 #                     (default: $(KERNEL_SRC)/../../../../private/google-modules)
@@ -112,7 +112,7 @@ KBUILD_OPTIONS += GXP_CHIP=$(GXP_CHIP) GXP_PLATFORM=$(GXP_PLATFORM)
 
 # Set google-modules source and out paths if not defined.
 GMODULE_SRC_PATH ?= $(KERNEL_SRC)/../../../../private/google-modules
-GMODULE_OUT_PATH ?= $(OUT_DIR)/../private/google-modules
+GMODULE_OUT_PATH ?= $(OUT_DIR)/../../../../private/google-modules
 
 ifneq ($(wildcard $(GMODULE_SRC_PATH)/edgetpu/$(EDGETPU_CHIP)/drivers/edgetpu/include),)
 ccflags-y     += -I$(GMODULE_SRC_PATH)/edgetpu/$(EDGETPU_CHIP)/drivers/edgetpu/include

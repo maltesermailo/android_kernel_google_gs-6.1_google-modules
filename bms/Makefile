@@ -228,7 +228,7 @@ KBUILD_OPTIONS += $(foreach m,$(GBMS_MODULES),CONFIG_$(m)=m )
 EXTRA_CFLAGS += -DDYNAMIC_DEBUG_MODULE
 EXTRA_CFLAGS += $(foreach m,$(GBMS_MODULES),-DCONFIG_$(m)_MODULE)
 
-EXTRA_SYMBOLS += $(OUT_DIR)/../private/google-modules/bms/misc/Module.symvers
+EXTRA_SYMBOLS += $(OUT_DIR)/../../../../private/google-modules/bms/misc/Module.symvers
 include $(KERNEL_SRC)/../../../../private/google-modules/soc/gs/Makefile.include
 
 modules modules_install clean compile_commands.json:

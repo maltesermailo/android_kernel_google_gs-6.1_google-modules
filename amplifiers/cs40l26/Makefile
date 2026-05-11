@@ -21,7 +21,7 @@ KBUILD_OPTIONS += CONFIG_CL_DSP=m \
 		  CONFIG_INPUT_CS40L26_I2C=m \
 		  CONFIG_SND_SOC_CS40L26=m
 
-EXTRA_CFLAGS += -DDYNAMIC_DEBUG_MODULE
+EXTRA_CFLAGS += -DDYNAMIC_DEBUG_MODULE -Wno-unused-variable -Wno-error
 
 include $(KERNEL_SRC)/../../../../private/google-modules/soc/gs/Makefile.include
 
@@ -30,5 +30,5 @@ modules modules_install clean compile_commands.json:
 		$(KBUILD_OPTIONS) \
 		EXTRA_CFLAGS="$(EXTRA_CFLAGS)" \
 		KBUILD_EXTRA_SYMBOLS="$(EXTRA_SYMBOLS)" \
-		W=1 $(@)
+		$(@)
 
