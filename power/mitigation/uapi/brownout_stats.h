@@ -6,7 +6,9 @@
 #if IS_ENABLED(CONFIG_REGULATOR_S2MPG14) || IS_ENABLED(CONFIG_REGULATOR_S2MPG12)
 #define METER_CHANNEL_MAX	12
 #else
-#define METER_CHANNEL_MAX	8
+#ifndef METER_CHANNEL_MAX
+#define METER_CHANNEL_MAX 8
+#endif
 #endif
 
 /* Using a constant size for all the platforms.

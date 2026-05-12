@@ -29,6 +29,8 @@ EXTRA_SYMBOLS += $(OUT_DIR)/../../../../private/google-modules/radio/samsung/*/M
 endif
 
 KBUILD_OPTIONS += CONFIG_GOOGLE_BCL=m
+KBUILD_OPTIONS += CONFIG_REGULATOR_S2MPG12=m CONFIG_EXYNOS_PM_QOS=y
+EXTRA_CFLAGS += -DCONFIG_SOC_GS201=1 -DCONFIG_SOC_GOOGLE=1 -DCONFIG_REGULATOR_S2MPG12=1 -DCONFIG_DRV_SAMSUNG_PMIC=1 -DCONFIG_GOOGLE_MODEMCTL=1 -DCONFIG_EXYNOS_PM_QOS=1 -DCONFIG_PINCTRL_EXYNOS_GS=1
 include $(KERNEL_SRC)/../../../../private/google-modules/soc/gs/Makefile.include
 
 modules modules_install clean compile_commands.json:

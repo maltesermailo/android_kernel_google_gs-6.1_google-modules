@@ -20,4 +20,4 @@ dwc3-exynos-usb-y			+= dwc3-exynos.o
 dwc3-exynos-usb-y			+= dwc3-exynos-otg.o
 
 # This gives the drivers access to the logbuffer.h and gvotable.h header
-subdir-ccflags-y += -I$(KERNEL_SRC)/../private/google-modules/bms
+subdir-ccflags-y += -I$(KERNEL_SRC)/../../../../private/google-modules/bms
