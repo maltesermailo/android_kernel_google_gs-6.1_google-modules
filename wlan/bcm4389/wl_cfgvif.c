@@ -5571,7 +5571,7 @@ wl_cfg80211_ch_switch_notify(struct net_device *dev, uint16 chanspec, struct wip
 	/* force set link_id and pucturing bitmap as 0  */
 	cfg80211_ch_switch_notify(dev, &chandef, 0, 0);
 #elif (LINUX_VERSION_CODE >= KERNEL_VERSION(5, 19, 2)) || defined(WL_MLO_BKPORT)
-	cfg80211_ch_switch_notify(dev, &chandef, 0);
+	cfg80211_ch_switch_notify(dev, &chandef, 0, 0);
 #else
 	cfg80211_ch_switch_notify(dev, &chandef);
 #endif /* LINUX_VERSION_CODE > KERNEL_VERSION(5, 20, 0) || WL_MLO_BKPORT */

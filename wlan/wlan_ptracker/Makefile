@@ -28,6 +28,8 @@ EXTRA_CFLAGS += -I$(KERNEL_SRC)/../google-modules/wlan/wlan_ptracker
 
 ccflags-y := $(EXTRA_CFLAGS)
 
+-include $(KERNEL_SRC)/../../../../private/google-modules/Makefile.include
+
 modules modules_install clean compile_commands.json:
 	$(MAKE) -C $(KERNEL_SRC) M=$(M) \
 	$(KBUILD_OPTIONS) EXTRA_CFLAGS="$(EXTRA_CFLAGS)" KBUILD_EXTRA_SYMBOLS="$(EXTRA_SYMBOLS)" $(@)

@@ -21,6 +21,7 @@
 #include <linux/pci.h>
 #include <linux/pinctrl/consumer.h>
 #include <linux/platform_device.h>
+#include <soc/google/exynos-el3_mon.h>
 #include <linux/regmap.h>
 #include <linux/resource.h>
 #include <linux/signal.h>

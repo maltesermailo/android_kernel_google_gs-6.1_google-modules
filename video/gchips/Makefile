@@ -11,12 +11,14 @@ bigwave-$(CONFIG_DEBUG_FS) += bigo_debug.o
 KERNEL_SRC ?= /lib/modules/$(shell uname -r)/build
 M ?= $(shell pwd)
 
-KBUILD_OPTIONS += CONFIG_BIGWAVE=m ENABLE_SLC=y
+KBUILD_OPTIONS += CONFIG_BIGWAVE=m ENABLE_SLC=y CONFIG_SLC_PARTITION_MANAGER=y
 
 include $(KERNEL_SRC)/../../../../private/google-modules/soc/gs/Makefile.include
 
 EXTRA_CFLAGS += -I$(KERNEL_SRC)/../../../../private/google-modules/video/gchips/include
 EXTRA_CFLAGS += -DENABLE_SLC=1
+
+-include $(KERNEL_SRC)/../../../../private/google-modules/Makefile.include
 
 modules modules_install headers_install clean compile_commands.json:
 	$(MAKE) -C $(KERNEL_SRC) M=$(M) \

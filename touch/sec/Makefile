@@ -8,6 +8,8 @@ EXTRA_SYMBOLS	+= $(OUT_DIR)/../../../../private/google-modules/display/common/gs
 EXTRA_SYMBOLS	+= $(OUT_DIR)/../../../../private/google-modules/display/samsung/Module.symvers
 EXTRA_SYMBOLS	+= $(OUT_DIR)/../../../../private/google-modules/touch/common/Module.symvers
 
+-include $(KERNEL_SRC)/../../../../private/google-modules/Makefile.include
+
 modules modules_install clean compile_commands.json:
 	$(MAKE) -C $(KERNEL_SRC) M=$(M) \
 	EXTRA_CFLAGS="$(EXTRA_CFLAGS)" KBUILD_EXTRA_SYMBOLS="$(EXTRA_SYMBOLS)" $(@)

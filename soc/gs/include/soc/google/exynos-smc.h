@@ -1,0 +1,1 @@
+/home/jannikmueller/hadk/private/google-modules/soc/gs/include/linux/soc/samsung/exynos-smc.h

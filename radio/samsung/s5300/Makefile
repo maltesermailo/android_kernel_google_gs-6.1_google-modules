@@ -1,13 +1,25 @@
 KERNEL_SRC ?= /lib/modules/$(shell uname -r)/build
 M ?= $(shell pwd)
 
-KCFLAGS += -I$(KERNEL_SRC)/../../../../private/google-modules/soc/gs/include
-KCFLAGS += -I$(KERNEL_SRC)/../../../../private/google-modules/soc/gs/include/uapi
+EXTRA_CFLAGS += -I$(KERNEL_SRC)/../../../../private/google-modules/soc/gs/include
+EXTRA_CFLAGS += -I$(KERNEL_SRC)/../../../../private/google-modules/soc/gs/include/uapi
 
 EXTRA_SYMBOLS += $(O)/../../../../private/google-modules/soc/gs/Module.symvers
 EXTRA_SYMBOLS += $(O)/../../../../private/google-modules/bms/misc/Module.symvers
 
 EXTRA_CFLAGS+="-Wno-missing-prototypes"
+EXTRA_CFLAGS += -DCONFIG_SHM_IPC=1 -DCONFIG_EXYNOS_DIT=1 -DCONFIG_CPIF_TP_MONITOR=1 -DCONFIG_SOC_GS201=1 -DCONFIG_CP_PKTPROC=1 -DCONFIG_LINK_DEVICE_PCIE=1 -DCONFIG_GOOGLE_MODEMCTL=1 -DCONFIG_CPIF_AP_SUSPEND_DURING_VOICE_CALL=1 -DCONFIG_SOC_GOOGLE=1 -Wno-unused-variable -DCONFIG_SEC_MODEM_S5100=1 -DCONFIG_LINK_DEVICE_WITH_SBD_ARCH=1 -DCONFIG_CP_BTL=1 -DCONFIG_MODEM_IF_LEGACY_QOS=1 -DCONFIG_CP_PKTPROC_UL=1  
+EXTRA_CFLAGS += -DCONFIG_SHM_IPC=1 -DCONFIG_EXYNOS_DIT=1 -DCONFIG_CPIF_TP_MONITOR=1 -DCONFIG_SOC_GS201=1 -DCONFIG_CP_PKTPROC=1 -DCONFIG_LINK_DEVICE_PCIE=1 -DCONFIG_GOOGLE_MODEMCTL=1 -DCONFIG_CPIF_AP_SUSPEND_DURING_VOICE_CALL=1 -DCONFIG_SOC_GOOGLE=1 -Wno-unused-variable
+
+KBUILD_OPTIONS += CONFIG_LINK_DEVICE_WITH_SBD_ARCH=y
+KBUILD_OPTIONS += CONFIG_LINK_DEVICE_PCIE=y
+KBUILD_OPTIONS += CONFIG_EXYNOS_DIT=m
+#KBUILD_OPTIONS += CONFIG_CPIF_DIRECT_DM=m
+KBUILD_OPTIONS += CONFIG_CP_BTL=y
+KBUILD_OPTIONS += CONFIG_MODEM_IF_LEGACY_QOS=y
+#KBUILD_OPTIONS += CONFIG_CPIF_VENDOR_HOOK=m
+
+-include $(KERNEL_SRC)/../../../../private/google-modules/Makefile.include
 
 modules modules_install clean compile_commands.json:
 	$(MAKE) -C $(KERNEL_SRC) M=$(M) \

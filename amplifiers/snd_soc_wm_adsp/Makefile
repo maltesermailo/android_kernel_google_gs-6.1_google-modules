@@ -9,5 +9,7 @@ M ?= $(shell pwd)
 
 KBUILD_OPTIONS += CONFIG_SND_SOC_WM_ADSP=m
 
+-include $(KERNEL_SRC)/../../../../private/google-modules/Makefile.include
+
 modules modules_install clean compile_commands.json:
 	$(MAKE) -C $(KERNEL_SRC) M=$(M) $(KBUILD_OPTIONS) $(@)

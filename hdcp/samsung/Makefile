@@ -10,6 +10,8 @@ KBUILD_OPTIONS  += CONFIG_EXYNOS_HDCP2=m
 
 EXTRA_SYMBOLS  += $(OUT_DIR)/../../../../private/google-modules/trusty/Module.symvers
 
+-include $(KERNEL_SRC)/../../../../private/google-modules/Makefile.include
+
 modules modules_install clean compile_commands.json:
 	$(MAKE) -C $(KERNEL_SRC) M=$(M) \
 	$(KBUILD_OPTIONS) EXTRA_CFLAGS="$(EXTRA_CFLAGS)" KBUILD_EXTRA_SYMBOLS="$(EXTRA_SYMBOLS)" $(@)

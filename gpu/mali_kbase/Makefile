@@ -55,6 +55,8 @@ CONFIG_MALI_PIXEL_GPU_SLC ?= y
 # is not supported for out-of-tree builds.
 #
 CONFIGS :=
+EXTRA_CFLAGS += -I$(KERNEL_SRC)/../../../../private/google-modules/power/mitigation
+
 ifeq ($(MALI_KCONFIG_EXT_PREFIX),)
     CONFIG_MALI_MIDGARD ?= m
     ifeq ($(CONFIG_MALI_MIDGARD),m)
@@ -227,6 +229,8 @@ MAKE_ARGS := $(foreach config,$(CONFIGS), \
                         $(value config)=$(value $(value config)), \
                         $(value config)=n))
 
+EXTRA_CFLAGS += -I$(KERNEL_SRC)/../../../../private/google-modules/power/mitigation
+
 ifeq ($(MALI_KCONFIG_EXT_PREFIX),)
     MAKE_ARGS += CONFIG_MALI_PLATFORM_NAME=$(CONFIG_MALI_PLATFORM_NAME)
 endif
@@ -241,12 +245,14 @@ EXTRA_CFLAGS := $(foreach config,$(CONFIGS), \
                     $(if $(filter y m,$(value $(value config))), \
                         -D$(value config)=1))
 
+EXTRA_CFLAGS += -I$(KERNEL_SRC)/../../../../private/google-modules/power/mitigation
+
 ifeq ($(MALI_KCONFIG_EXT_PREFIX),)
     EXTRA_CFLAGS += -DCONFIG_MALI_PLATFORM_NAME='\"$(CONFIG_MALI_PLATFORM_NAME)\"'
     EXTRA_CFLAGS += -DCONFIG_MALI_NO_MALI_DEFAULT_GPU='\"$(CONFIG_MALI_NO_MALI_DEFAULT_GPU)\"'
 endif
 
-include $(KDIR)/../private/google-modules/soc/gs/Makefile.include
+include $(KDIR)/../../../../private/google-modules/soc/gs/Makefile.include
 
 #
 # KBUILD_EXTRA_SYMBOLS to prevent warnings about unknown functions
@@ -317,6 +323,8 @@ endif
 
 # Define and "all" target, which isn't really needed but doesn't hurt.
 all: modules
+
+-include $(KERNEL_SRC)/../../../../private/google-modules/Makefile.include
 
 modules modules_install clean compile_commands.json:
 	$(MAKE) -C $(KDIR) M=$(M) $(MAKE_ARGS) EXTRA_CFLAGS="$(EXTRA_CFLAGS)" KBUILD_EXTRA_SYMBOLS="$(EXTRA_SYMBOLS)" $(@)

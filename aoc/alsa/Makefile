@@ -3,7 +3,7 @@
 KERNEL_SRC ?= /lib/modules/$(shell uname -r)/build
 M ?= $(shell pwd)
 
-KBUILD_OPTIONS	+= CONFIG_AOC_DRIVER=m
+KBUILD_OPTIONS	+= CONFIG_AOC_DRIVER=m CONFIG_SOC_GS201=y
 
 EXTRA_CFLAGS	+= -I$(KERNEL_SRC)/../../../../private/google-modules/aoc_ipc
 EXTRA_CFLAGS	+= -I$(KERNEL_SRC)/../../../../private/google-modules/aoc
@@ -15,6 +15,8 @@ EXTRA_SYMBOLS	+= $(OUT_DIR)/../../../../private/google-modules/amplifiers/audiom
 EXTRA_SYMBOLS	+= $(OUT_DIR)/../../../../private/google-modules/display/samsung/Module.symvers
 
 include $(KERNEL_SRC)/../../../../private/google-modules/soc/gs/Makefile.include
+
+-include $(KERNEL_SRC)/../../../../private/google-modules/Makefile.include
 
 modules modules_install clean compile_commands.json:
 	$(MAKE) -C $(KERNEL_SRC) M=$(M) \

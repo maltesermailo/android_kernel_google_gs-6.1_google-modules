@@ -103,7 +103,6 @@ gxp-flags += -I$(CURRENT_DIR)/gcip-kernel-driver/drivers/gcip/iif/include
 
 ccflags-y += $(EXTRA_CFLAGS) $(gxp-flags)
 # Flags needed for external modules.
-ccflags-y += -DCONFIG_GOOGLE_BCL
 
 KBUILD_OPTIONS += GXP_CHIP=$(GXP_CHIP) GXP_PLATFORM=$(GXP_PLATFORM)
 
@@ -148,6 +147,8 @@ endif
 ifneq ($(wildcard $(GMODULE_OUT_PATH)/perf/google_pm_qos_Module.symvers),)
 EXTRA_SYMBOLS += $(GMODULE_OUT_PATH)/perf/google_pm_qos_Module.symvers
 endif
+
+-include $(KERNEL_SRC)/../../../../private/google-modules/Makefile.include
 
 modules modules_install compile_commands.json:
 	$(MAKE) -C $(KERNEL_SRC) M=$(M)/$(GCIP_DIR) gcip.o
