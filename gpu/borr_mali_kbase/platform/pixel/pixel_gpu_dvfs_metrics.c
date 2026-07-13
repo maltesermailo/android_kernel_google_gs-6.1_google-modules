@@ -276,7 +276,7 @@ int gpu_dvfs_kctx_init(struct kbase_context *kctx)
 	int ret = 0;
 
 	/* Get UID from task_struct */
-	pid = find_get_pid(kctx->kprcs->tgid);
+	pid = get_pid(find_pid_ns(nr, &init_pid_ns));
 	task = get_pid_task(pid, PIDTYPE_TGID);
 	uid = task->cred->uid;
 	put_task_struct(task);
