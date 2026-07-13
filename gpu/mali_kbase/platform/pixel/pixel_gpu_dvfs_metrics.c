@@ -276,10 +276,20 @@ int gpu_dvfs_kctx_init(struct kbase_context *kctx)
 	int ret = 0;
 
 	/* Get UID from task_struct */
-	pid = get_pid(find_pid_ns(nr, &init_pid_ns));
+	rcu_read_lock();
+	pid = get_pid(find_pid_ns(kctx->kprcs->tgid, &init_pid_ns));
+	rcu_read_unlock();
+
 	task = get_pid_task(pid, PIDTYPE_TGID);
-	uid = task->cred->uid;
-	put_task_struct(task);
+	if (task) {
+		uid = task->cred->uid;
+		put_task_struct(task);
+	} else {
+		dev_warn(kbdev->dev,
+				 "kctx_init: tgid %d lookup failed (current tgid=%d), using current_uid\n",
+				 kctx->kprcs->tgid, task_tgid_nr(current));
+		uid = current_uid();
+	}
 	put_pid(pid);
 	uid_hash = gpu_dvfs_hash_uid_stats(__kuid_val(uid));
 
